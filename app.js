@@ -25,10 +25,14 @@ init();
 
 async function init() {
   deck = await loadDeck();
-  renderEmptySpread();
+
   dealBtn.addEventListener("click", deal);
   focusBackdrop.addEventListener("click", closeFocus);
   focusCardEl.addEventListener("click", advanceFocused);
+
+  // Auto-deal on first load (so cards are immediately interactive)
+  deal();
+
   updateDealEnabled();
 }
 
@@ -44,16 +48,6 @@ function deal() {
   states = spread.map(() => ({ stage: STAGE.DOWN }));
   renderSpread();
   updateDealEnabled();
-}
-
-function renderEmptySpread() {
-  spreadEl.innerHTML = "";
-  for (let i = 0; i < 3; i++) {
-    const card = document.createElement("article");
-    card.className = "card";
-    card.innerHTML = templateFacedownBackOnly();
-    spreadEl.appendChild(card);
-  }
 }
 
 function renderSpread() {
@@ -123,7 +117,6 @@ function renderFocus() {
     return;
   }
 
-  // Shouldn't happen because we auto-advance DOWN -> QUOTE on open
   focusQuote.style.display = "none";
   focusFigure.style.display = "none";
   focusHint.textContent = "Tap to reveal.";
