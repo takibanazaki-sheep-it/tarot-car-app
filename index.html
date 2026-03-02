@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tarot Car — 3 Card Deal</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand__title">TAROT CAR</div>
+      <div class="brand__sub">Major Arcana — 3-card spread</div>
+    </div>
+
+    <button id="dealBtn" class="btn" type="button" aria-label="Deal three cards">
+      Deal
+    </button>
+  </header>
+
+  <main class="wrap">
+    <section class="spread" id="spread" aria-label="Three card spread"></section>
+
+    <section class="focus" id="focus" aria-hidden="true">
+      <div class="focus__card" id="focusCard">
+        <div class="focus__header" id="focusHeader"></div>
+
+        <div class="focus__body">
+          <div class="focus__quote" id="focusQuote"></div>
+          <figure class="focus__figure" id="focusFigure">
+            <img id="focusImg" alt="" />
+          </figure>
+        </div>
+
+        <div class="focus__hint" id="focusHint"></div>
+      </div>
+
+      <div class="focus__backdrop" id="focusBackdrop" aria-hidden="true"></div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
